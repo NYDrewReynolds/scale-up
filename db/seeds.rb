@@ -1,9 +1,9 @@
 class Seed
   def run
     create_known_users
-    create_borrowers(10)
-    create_lenders(100)
-    create_loan_requests_for_each_borrower(20)
+    create_borrowers(30000)
+    create_lenders(200000)
+    create_loan_requests_for_each_borrower(500000)
     create_categories
     create_orders
   end
@@ -51,7 +51,7 @@ class Seed
   end
 
   def create_categories
-    ["agriculture", "community", "education"].each do |cat|
+    ["agriculture", "community", "education", "lol", "haha", "wooo", "hoo", "yay", "food", "technology", "fun", "family", "love", "lulz", "dank-nugz"].each do |cat|
       Category.create(title: cat, description: cat + " stuff")
     end
     put_requests_in_categories
@@ -91,7 +91,7 @@ class Seed
   end
 
   def create_orders
-    loan_requests = LoanRequest.all
+    loan_requests = LoanRequest.all.sample(50000)
     possible_donations = %w(25, 50, 75, 100, 125, 150, 175, 200)
     loan_requests.each do |request|
       donate = possible_donations.sample

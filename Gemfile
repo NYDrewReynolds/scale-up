@@ -21,16 +21,16 @@ gem "faker"
 gem "responders"
 gem "traceroute"
 gem "rails_12factor", group: :production
+gem "poltergeist"
+gem "pry-rails"
 
 group :development, :test do
-  gem "pry-rails"
   gem "awesome_print"
   gem "web-console", "~> 2.0"
   gem "rspec-rails"
   gem "capybara"
   gem "launchy"
   gem "database_cleaner"
-  gem "poltergeist"
 end
 
 group :development do
