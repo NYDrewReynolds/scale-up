@@ -11,6 +11,7 @@
 /log/*
 !/log/.keep
 /tmp
+.idea
 
 /coverage/
 /config/local_env.yml
