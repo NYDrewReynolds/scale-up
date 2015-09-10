@@ -23,6 +23,7 @@ gem "traceroute"
 gem "rails_12factor", group: :production
 gem "poltergeist"
 gem "pry-rails"
+gem "populator"
 
 group :development, :test do
   gem "awesome_print"
