@@ -110,6 +110,7 @@ class Seed
     create_known_users
     create_categories
     create_borrowers(30000)
+    create_loan_requests(500000)
     create_lenders(200000)
     create_orders
   end
@@ -152,7 +153,7 @@ class Seed
 
   def create_loan_requests(quantity)
     categories = Category.all
-    LoanRequest.populate(17) do |lr|
+    LoanRequest.populate(quantity) do |lr|
       lr.user_id = borrowers.sample.id
       lr.title = Faker::Commerce.product_name
       lr.description = Faker::Company.catch_phrase
@@ -163,7 +164,6 @@ class Seed
       lr.repayed = 0
       lr.repayment_rate = [0, 1].sample
       lr.repayment_begin_date = Faker::Time.between(3.days.ago, Time.now)
-
       LoanRequestsCategory.populate(1) do |lrc|
         lrc.category_id = categories.sample.id
         lrc.loan_request_id = lr.id
