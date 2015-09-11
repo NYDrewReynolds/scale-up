@@ -181,7 +181,7 @@ class Seed
     possible_donations = %w(25, 50, 75, 100, 125, 150, 175, 200)
     loan_requests.each do |request|
       donate = possible_donations.sample
-      lender = lenders.sample(1)
+      lender = lenders.sample
       order = Order.create(cart_items:
                                {"#{request.id}" => donate},
                            user_id: lender.id)
