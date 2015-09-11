@@ -181,7 +181,7 @@ class Seed
   def create_orders
     loan_requests = LoanRequest.all.sample(50000)
     possible_donations = %w(25, 50, 75, 100, 125, 150, 175, 200)
-    loan_requests.each do |request|
+    loan_requests.find_each do |request|
       donate = possible_donations.sample
       lender = lenders.sample
       order = Order.create(cart_items:
@@ -193,4 +193,4 @@ class Seed
 
 end
 
-Seed.new.run
+Seed.new.create_orders
