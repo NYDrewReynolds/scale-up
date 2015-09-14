@@ -112,7 +112,7 @@ class Seed
     # create_borrowers(30000)
     # create_loan_requests(500000)
     # create_lenders(200000)
-    create_orders
+    create_orders(50000)
   end
 
   def lenders
@@ -178,19 +178,24 @@ class Seed
     end
   end
 
-  def create_orders
-    loan_requests = LoanRequest.all.sample(50000)
-    possible_donations = %w(25, 50, 75, 100, 125, 150, 175, 200)
-    loan_requests.find_each do |request|
-      donate = possible_donations.sample
-      lender = lenders.sample
-      order = Order.create(cart_items:
-                               {"#{request.id}" => donate},
+  def create_orders(quantity)
+    possible_donations = %w(25 50 75 100 125 150 175 200)
+    loan_request_ids = (1..500000).to_a
+    lndrs = lenders
+
+    quantity.times do
+      donation = possible_donations.sample
+      lender = lndrs.sample
+      request_id = loan_request_ids.sample
+
+      order = Order.create(cart_items: {"#{request_id}" => donation},
                            user_id: lender.id)
       order.update_contributed(lender)
+
+      puts "Created order ##{order.id}"
     end
   end
 
 end
 
-Seed.new.create_orders
+Seed.new.run
