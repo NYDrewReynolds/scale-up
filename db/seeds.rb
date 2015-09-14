@@ -107,11 +107,11 @@ class Seed
   # end
 
   def run
-    create_known_users
-    create_categories
-    create_borrowers(30000)
-    create_loan_requests(500000)
-    create_lenders(200000)
+    # create_known_users
+    # create_categories
+    # create_borrowers(30000)
+    # create_loan_requests(500000)
+    # create_lenders(200000)
     create_orders
   end
 
