@@ -25,6 +25,7 @@ gem "poltergeist"
 gem "pry-rails"
 gem "populator"
 gem "newrelic_rpm"
+gem "will_paginate"
 
 group :development, :test do
   gem "awesome_print"
