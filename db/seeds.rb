@@ -107,12 +107,12 @@ class Seed
   # end
 
   def run
-    # create_known_users
-    # create_categories
-    # create_borrowers(30000)
-    # create_loan_requests(500000)
-    # create_lenders(200000)
-    create_orders(50000)
+    create_known_users
+    create_categories
+    create_borrowers(30)
+    create_loan_requests(500)
+    create_lenders(200)
+    create_orders(50)
   end
 
   def lenders
@@ -180,7 +180,7 @@ class Seed
 
   def create_orders(quantity)
     possible_donations = %w(25 50 75 100 125 150 175 200)
-    loan_request_ids = (1..500000).to_a
+    loan_request_ids = (1..500).to_a
     lndrs = lenders
 
     quantity.times do

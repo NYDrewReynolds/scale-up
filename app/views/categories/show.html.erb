@@ -6,9 +6,9 @@
   <div class="row">
     <div class="col-md-3 pull-left">
       <select class="form-control btn-info">
-        <%= @categories.each do |category| %>
-        <option value="<%= category.title %>"><%= link_to category.title.capitalize, category_path(category) %></option>
-            <% end %>
+        <%= @category.each do |category| %>
+            <option value="<%= category.title %>"><%= link_to category.title.capitalize, category_path(category) %></option>
+        <% end %>
       </select>
     </div>
 
