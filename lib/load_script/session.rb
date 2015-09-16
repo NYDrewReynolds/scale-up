@@ -140,7 +140,7 @@ module LoadScript
     def lender_makes_loan
       log_out
       sign_up_as_lender
-
+    #   make loan
     end
 
     #[X] Anonymous user browses loan requests
