@@ -120,6 +120,29 @@ module LoadScript
       session.fill_in("user_password_confirmation", with: "password")
       session.click_link_or_button "Create Account"
     end
+
+    def new_borrower_loan_request
+      puts "new borrower makes loan request"
+      log_out
+      sign_up_as_borrower
+      session.click_link_or_button "Create Loan Request"
+      session.fill_in("loan_request_title", with: "Title")
+      session.fill_in("loan_request_description", with: "Descriptionnn")
+      session.fill_in("loan_request_image_url", with: "http://google.com/image.jpg")
+      session.fill_in("loan_request_requested_by_date", with: "#{Faker::Time.between(7.days.ago, 3.days.ago)}")
+      session.fill_in("loan_request_repayment_begin_date", with: "#{Faker::Time.between(3.days.ago, Time.now)}")
+      session.find("#loan_request_category").click
+      session.click_link_or_button "Agriculture"
+      session.fill_in("loan_request_amount", with: "500")
+      session.click_link_or_button "Submit"
+    end
+
+    def lender_makes_loan
+      log_out
+      sign_up_as_lender
+
+    end
+
     #[X] Anonymous user browses loan requests
     #[X] User browses pages of loan requests
     #[] User browses categories
@@ -127,7 +150,7 @@ module LoadScript
     #[X] User views individual loan request
     #[X] New user signs up as lender
     #[X] New user signs up as borrower
-    #[] New borrower creates loan request
+    #[X] New borrower creates loan request
     #[] Lender makes loan
 
   end
